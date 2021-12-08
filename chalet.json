@@ -1,0 +1,60 @@
+{
+	"version": "1.0.0",
+	"workspace": "Chalet Example - SDL2",
+	"abstracts:*": {
+		"language": "C++",
+		"settings:Cxx": {
+			"cppStandard": "c++17",
+			"rtti": false,
+			"staticLinking": false,
+			"warnings": "strict",
+			"defines.debug": [
+				"_DEBUG"
+			],
+			"includeDirs": [
+				"${externalDir}/sdl2/include"
+			],
+			"libDirs": [
+				"${externalBuildDir}/sdl2"
+			],
+			"links.!debug": [
+				"SDL2"
+			],
+			"links.debug": [
+				"SDL2d"
+			],
+			"links.windows": [
+				"gdi32"
+			]
+		}
+	},
+	"targets": {
+		"sdl2": {
+			"kind": "cmakeProject",
+			"location": "${externalDir}/sdl2",
+			"recheck": false
+		},
+		"sdl2-app": {
+			"kind": "executable",
+			"location": "src",
+			"runTarget": true,
+			"settings:Cxx": {
+				"pch": "src/PCH.hpp",
+				"windowsSubSystem.!debug": "windows"
+			}
+		}
+	},
+	"externalDependencies": {
+		"sdl2": {
+			"repository": "git@github.com:libsdl-org/SDL.git"
+		}
+	},
+	"distribution": {
+		"new-project": {
+			"kind": "bundle",
+			"buildTargets": [
+				"new-project"
+			]
+		}
+	}
+}

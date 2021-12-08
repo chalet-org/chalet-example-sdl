@@ -1,0 +1,14 @@
+# Build system
+.chaletrc
+chalet_external/
+build/
+dist/
+gmon.out
+*.stats
+Thumbs.db
+.DS_Store
+
+# VS Code
+
+# Project specific
+#
