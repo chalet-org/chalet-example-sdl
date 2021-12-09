@@ -33,7 +33,7 @@ int main(const int argc, const char* const argv[])
 		return 1;
 	}
 
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (renderer == nullptr)
 	{
 		std::cout << "Renderer could not be created! SDL_Error: " << SDL_GetError() << "\n";
@@ -65,6 +65,7 @@ int main(const int argc, const char* const argv[])
 	indices[0] = 0;
 	indices[1] = 1;
 	indices[2] = 3;
+
 	indices[3] = 1;
 	indices[4] = 2;
 	indices[5] = 3;
