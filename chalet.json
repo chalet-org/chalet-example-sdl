@@ -29,6 +29,9 @@
 			"links.macos": [
 				"iconv"
 			],
+			"links.linux": [
+				"dl"
+			],
 			"macosFrameworks": [
 				"CoreFoundation",
 				"CoreAudio",
