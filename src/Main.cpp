@@ -2,6 +2,7 @@
 
 int main(const int argc, const char* const argv[])
 {
+#if defined(_DEBUG)
 	std::cout << "Hello world!\n\n";
 	std::cout << "Args:\n";
 
@@ -9,6 +10,10 @@ int main(const int argc, const char* const argv[])
 	{
 		std::cout << "  " << argv[i] << '\n';
 	}
+#else
+	UNUSED(argc);
+	UNUSED(argv);
+#endif
 
 	std::cout.flush();
 

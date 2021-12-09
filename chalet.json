@@ -23,9 +23,6 @@
 			"links.debug": [
 				"SDL2d"
 			],
-			"links.windows": [
-				"gdi32"
-			],
 			"links.macos": [
 				"iconv"
 			],
