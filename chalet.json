@@ -25,6 +25,23 @@
 			],
 			"links.windows": [
 				"gdi32"
+			],
+			"links.macos": [
+				"iconv"
+			],
+			"macosFrameworks": [
+				"CoreFoundation",
+				"CoreAudio",
+				"CoreVideo",
+				"CoreHaptics",
+				"GameController",
+				"Metal",
+				"AppKit",
+				"IOKit",
+				"Carbon",
+				"AudioUnit",
+				"AudioToolbox",
+				"ForceFeedback"
 			]
 		}
 	},

@@ -10,6 +10,8 @@ int main(const int argc, const char* const argv[])
 		std::cout << "  " << argv[i] << '\n';
 	}
 
+	std::cout.flush();
+
 	// The window we'll be rendering to
 	SDL_Window* window = nullptr;
 
@@ -34,17 +36,30 @@ int main(const int argc, const char* const argv[])
 		}
 		else
 		{
+			bool quit = false;
+
 			// Get window surface
 			screenSurface = SDL_GetWindowSurface(window);
 
-			// Fill the surface
-			SDL_FillRect(screenSurface, nullptr, SDL_MapRGB(screenSurface->format, 0x22, 0x22, 0x55));
+			//Event handler
+			SDL_Event ev;
+			while (!quit)
+			{
+				while (SDL_PollEvent(&ev) != 0)
+				{
+					//User requests quit
+					if (ev.type == SDL_QUIT)
+					{
+						quit = true;
+					}
+				}
 
-			// Update the surface
-			SDL_UpdateWindowSurface(window);
+				// Fill the surface
+				SDL_FillRect(screenSurface, nullptr, SDL_MapRGB(screenSurface->format, 0x22, 0x22, 0x55));
 
-			// Wait two seconds
-			SDL_Delay(2000);
+				// Update the surface
+				SDL_UpdateWindowSurface(window);
+			}
 		}
 	}
 
