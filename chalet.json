@@ -34,13 +34,12 @@
 				"CoreAudio",
 				"CoreVideo",
 				"CoreHaptics",
-				"GameController",
-				"Metal",
 				"AppKit",
 				"IOKit",
 				"Carbon",
-				"AudioUnit",
+				"Metal",
 				"AudioToolbox",
+				"GameController",
 				"ForceFeedback"
 			]
 		}
