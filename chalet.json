@@ -17,10 +17,16 @@
 			"libDirs": [
 				"${externalBuildDir}/sdl2"
 			],
-			"staticLinks.!debug": [
+			"staticLinks.!windows.!debug": [
 				"SDL2"
 			],
-			"staticLinks.debug": [
+			"staticLinks.!windows.debug": [
+				"SDL2d"
+			],
+			"links.windows.!debug": [
+				"SDL2"
+			],
+			"links.windows.debug": [
 				"SDL2d"
 			],
 			"links.macos": [

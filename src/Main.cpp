@@ -29,7 +29,6 @@ int main(const int argc, const char* const argv[])
 	constexpr int screenWidth = 640;
 	constexpr int screenHeight = 480;
 
-	bool quit = false;
 	window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
 	if (window == nullptr)
 	{
@@ -76,6 +75,7 @@ int main(const int argc, const char* const argv[])
 	indices[5] = 3;
 
 	SDL_Event ev;
+	bool quit = false;
 	while (!quit)
 	{
 		while (SDL_PollEvent(&ev) != 0)
