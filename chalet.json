@@ -17,16 +17,10 @@
 			"libDirs": [
 				"${externalBuildDir}/sdl2"
 			],
-			"staticLinks.!windows.!debug": [
+			"links.!debug": [
 				"SDL2"
 			],
-			"staticLinks.!windows.debug": [
-				"SDL2d"
-			],
-			"links.windows.!debug": [
-				"SDL2"
-			],
-			"links.windows.debug": [
+			"links.debug": [
 				"SDL2d"
 			],
 			"links.macos": [
@@ -54,7 +48,11 @@
 		"sdl2": {
 			"kind": "cmakeProject",
 			"location": "${externalDir}/sdl2",
-			"recheck": false
+			"recheck": false,
+			"defines": [
+				"SDL_SHARED=ON",
+				"SDL_STATIC=OFF"
+			]
 		},
 		"sdl2-app": {
 			"kind": "executable",
