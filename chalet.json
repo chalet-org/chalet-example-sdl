@@ -49,7 +49,7 @@
 			"kind": "cmakeProject",
 			"location": "${externalDir}/sdl2",
 			"recheck": false,
-			"defines": [
+			"defines.windows": [
 				"SDL_SHARED=ON",
 				"SDL_STATIC=OFF"
 			]
