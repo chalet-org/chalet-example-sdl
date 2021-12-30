@@ -56,12 +56,15 @@
 		},
 		"sdl2-app": {
 			"kind": "executable",
-			"location": "src",
 			"runTarget": true,
 			"settings:Cxx": {
 				"pch": "src/PCH.hpp",
+				"includeDirs": [
+					"src"
+				],
 				"windowsSubSystem.!debug": "windows"
-			}
+			},
+			"files": "src/**.cpp"
 		}
 	},
 	"externalDependencies": {
