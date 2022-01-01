@@ -8,6 +8,7 @@
 			"rtti": false,
 			"staticLinking": false,
 			"warnings": "strict",
+			"treatWarningsAsErrors": true,
 			"defines.debug": [
 				"_DEBUG"
 			],
@@ -49,6 +50,7 @@
 			"kind": "cmakeProject",
 			"location": "${externalDir}/sdl2",
 			"recheck": false,
+			"rebuild": false,
 			"defines.windows": [
 				"SDL_SHARED=ON",
 				"SDL_STATIC=OFF"
