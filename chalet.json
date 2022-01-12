@@ -1,6 +1,12 @@
 {
 	"version": "1.0.0",
 	"workspace": "Chalet Example - SDL2",
+	"externalDependencies": {
+		"sdl2": {
+			"repository": "git@github.com:libsdl-org/SDL.git",
+			"tag": "release-2.0.20"
+		}
+	},
 	"abstracts:*": {
 		"language": "C++",
 		"settings:Cxx": {
@@ -67,12 +73,6 @@
 				"windowsSubSystem.!debug": "windows"
 			},
 			"files": "src/**.cpp"
-		}
-	},
-	"externalDependencies": {
-		"sdl2": {
-			"repository": "git@github.com:libsdl-org/SDL.git",
-			"tag": "release-2.0.18"
 		}
 	},
 	"distribution": {
