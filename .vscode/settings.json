@@ -12,6 +12,6 @@
 		".clang-format": "yaml"
 	},
 	"files.exclude": {
-		"chalet_external": true
+		// "chalet_external": true
 	}
 }
