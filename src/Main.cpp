@@ -51,28 +51,28 @@ int main(const int argc, const char* const argv[])
 	int indices[6];
 
 	vert[0].position.x = 32;
-	vert[0].position.y = 32;
-	vert[0].color = { 255, 0, 0, 255 };
+	vert[0].position.y = 448;
+	vert[0].color = { 0, 0, 255, 255 };
 
 	vert[1].position.x = 608;
-	vert[1].position.y = 32;
-	vert[1].color = { 0, 0, 0, 255 };
+	vert[1].position.y = 448;
+	vert[1].color = { 0, 255, 0, 255 };
 
 	vert[2].position.x = 608;
-	vert[2].position.y = 448;
-	vert[2].color = { 0, 255, 0, 255 };
+	vert[2].position.y = 32;
+	vert[2].color = { 0, 0, 0, 255 };
 
 	vert[3].position.x = 32;
-	vert[3].position.y = 448;
-	vert[3].color = { 0, 0, 255, 255 };
+	vert[3].position.y = 32;
+	vert[3].color = { 255, 0, 0, 255 };
 
 	indices[0] = 0;
 	indices[1] = 1;
 	indices[2] = 3;
 
-	indices[3] = 1;
-	indices[4] = 2;
-	indices[5] = 3;
+	indices[3] = 3;
+	indices[4] = 1;
+	indices[5] = 2;
 
 	SDL_Event ev;
 	bool quit = false;
