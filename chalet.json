@@ -57,6 +57,11 @@
 			"location": "${externalDir}/sdl2",
 			"recheck": false,
 			"rebuild": false,
+			"defines.linux": [
+				"SDL_SHARED=OFF",
+				"SDL_STATIC=ON",
+				"CMAKE_C_FLAGS=-fPIC"
+			],
 			"defines.windows": [
 				"SDL_SHARED=ON",
 				"SDL_STATIC=OFF"
