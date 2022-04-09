@@ -1,6 +1,6 @@
 {
 	"version": "1.0.0",
-	"workspace": "Chalet Example - SDL2",
+	"name": "Chalet Example - SDL2",
 	"externalDependencies": {
 		"sdl2": {
 			"repository": "git@github.com:libsdl-org/SDL.git",
