@@ -15,7 +15,7 @@
 			"staticRuntimeLibrary": false,
 			"warnings": "strict",
 			"treatWarningsAsErrors": true,
-			"defines.debug": [
+			"defines[:debug]": [
 				"_DEBUG"
 			],
 			"includeDirs": [
@@ -24,16 +24,16 @@
 			"libDirs": [
 				"${externalBuildDir}/sdl2"
 			],
-			"links.!debug": [
+			"links[:!debug]": [
 				"SDL2"
 			],
-			"links.debug": [
+			"links[:debug]": [
 				"SDL2d"
 			],
-			"links.macos": [
+			"links[:macos]": [
 				"iconv"
 			],
-			"links.linux": [
+			"links[:linux]": [
 				"dl"
 			],
 			"macosFrameworks": [
@@ -57,12 +57,12 @@
 			"location": "${externalDir}/sdl2",
 			"recheck": false,
 			"rebuild": false,
-			"defines.linux": [
+			"defines[:linux]": [
 				"SDL_SHARED=OFF",
 				"SDL_STATIC=ON",
 				"CMAKE_C_FLAGS=-fPIC"
 			],
-			"defines.windows": [
+			"defines[:windows]": [
 				"SDL_SHARED=ON",
 				"SDL_STATIC=OFF"
 			]
@@ -74,7 +74,7 @@
 				"includeDirs": [
 					"src"
 				],
-				"windowsSubSystem.!debug": "windows"
+				"windowsSubSystem[:!debug]": "windows"
 			},
 			"files": "src/**.cpp"
 		}
