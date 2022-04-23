@@ -13,7 +13,7 @@
 			"cppStandard": "c++20",
 			"runtimeTypeInformation": false,
 			"staticRuntimeLibrary": false,
-			"warnings": "strict",
+			"warningsPreset": "strict",
 			"treatWarningsAsErrors": true,
 			"defines[:debug]": [
 				"_DEBUG"
