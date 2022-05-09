@@ -22,7 +22,7 @@ int main(const int argc, const char* const argv[])
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
-		std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << "\n";
+		std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << '\n';
 		return 1;
 	}
 
@@ -32,7 +32,7 @@ int main(const int argc, const char* const argv[])
 	window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
 	if (window == nullptr)
 	{
-		std::cout << "Window could not be created! SDL_Error: " << SDL_GetError() << "\n";
+		std::cout << "Window could not be created! SDL_Error: " << SDL_GetError() << '\n';
 		SDL_Quit();
 		return 1;
 	}
@@ -40,7 +40,7 @@ int main(const int argc, const char* const argv[])
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (renderer == nullptr)
 	{
-		std::cout << "Renderer could not be created! SDL_Error: " << SDL_GetError() << "\n";
+		std::cout << "Renderer could not be created! SDL_Error: " << SDL_GetError() << '\n';
 		SDL_DestroyWindow(window);
 		SDL_Quit();
 		return 1;
