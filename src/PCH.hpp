@@ -7,13 +7,7 @@
 	#endif
 #endif // _DEBUG
 
-#if defined(__linux__) && !defined(SDL_VIDEO_DRIVER_X11)
-	#define SDL_VIDEO_DRIVER_X11
-#endif
-
-#define SDL_MAIN_HANDLED
-#include <SDL.h>
-#include <SDL_syswm.h>
+#include "Libraries/SDL2.hpp"
 
 #include <algorithm>
 #include <cstdio>
