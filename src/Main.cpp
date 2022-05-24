@@ -29,7 +29,7 @@ int main(const int argc, const char* const argv[])
 	constexpr int screenWidth = 640;
 	constexpr int screenHeight = 480;
 
-	window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_HIDDEN);
 	if (window == nullptr)
 	{
 		std::cout << "Window could not be created! SDL_Error: " << SDL_GetError() << '\n';
@@ -73,6 +73,8 @@ int main(const int argc, const char* const argv[])
 	indices[3] = 3;
 	indices[4] = 1;
 	indices[5] = 2;
+
+	SDL_ShowWindow(window);
 
 	SDL_Event ev;
 	bool quit = false;
