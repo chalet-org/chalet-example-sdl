@@ -19,10 +19,10 @@
 				"_DEBUG"
 			],
 			"includeDirs": [
-				"${externalDir}/sdl2/include"
+				"${external:sdl2}/include"
 			],
 			"libDirs": [
-				"${externalBuildDir}/sdl2"
+				"${externalBuild:sdl2}"
 			],
 			"links[:!debug]": [
 				"SDL2"
@@ -54,7 +54,7 @@
 	"targets": {
 		"sdl2": {
 			"kind": "cmakeProject",
-			"location": "${externalDir}/sdl2",
+			"location": "${external:sdl2}",
 			"recheck": false,
 			"rebuild": false,
 			"defines[:linux]": [
