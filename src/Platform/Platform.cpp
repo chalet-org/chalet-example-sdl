@@ -54,11 +54,11 @@ WindowHandle getPlatformWindowHandle(SDL_Window* inWindow)
 /*****************************************************************************/
 void Platform::initialize(SDL_Window* inWindow)
 {
-#if defined(_WIN32)
 	auto handle = getPlatformWindowHandle(inWindow);
+#if defined(_WIN32)
 	util::WindowsPlatform platform;
 	platform.setIcon(handle);
 #else
-	UNUSED(inWindow);
+	UNUSED(handle);
 #endif
 }
