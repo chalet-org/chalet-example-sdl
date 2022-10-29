@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "Platform/Platform.hpp"
+
 int main(const int argc, const char* const argv[])
 {
 #if defined(_DEBUG)
@@ -36,6 +38,8 @@ int main(const int argc, const char* const argv[])
 		SDL_Quit();
 		return 1;
 	}
+
+	Platform::initialize(window);
 
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (renderer == nullptr)
