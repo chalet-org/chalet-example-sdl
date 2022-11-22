@@ -4,7 +4,7 @@
 	"externalDependencies": {
 		"sdl2": {
 			"repository": "git@github.com:libsdl-org/SDL.git",
-			"tag": "release-2.24.0"
+			"tag": "release-2.26.0"
 		}
 	},
 	"abstracts:*": {
