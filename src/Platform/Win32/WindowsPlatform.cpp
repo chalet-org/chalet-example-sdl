@@ -3,6 +3,12 @@
 
 	#include "Resource.h"
 
+	#include <dwmapi.h>
+
+	#ifndef DWMWA_USE_IMMERSIVE_DARK_MODE
+		#define DWMWA_USE_IMMERSIVE_DARK_MODE 20
+	#endif
+
 	#include <cmath>
 
 namespace util
@@ -16,7 +22,7 @@ WindowsPlatform::WindowsPlatform()
 // The window handle uses 32x32 (ICON_BIG) & 16x16 (ICON_SMALL) sized icons.
 // This should be called any time the window is create/recreated
 //
-void WindowsPlatform::setIcon(HWND handle)
+void WindowsPlatform::initialize(HWND handle)
 {
 	// Get the icon directory
 	PBYTE iconDirectory = getIconDirectory(WIN32_ICON_MAIN);
@@ -37,6 +43,14 @@ void WindowsPlatform::setIcon(HWND handle)
 	// https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-destroyicon
 	// It is only necessary to call DestroyIcon for icons and cursors created with the following functions:
 	//   CreateIconFromResourceEx (if called without the LR_SHARED flag)
+
+	// Dark mode
+	// Note: in MinGW (GCC 12.2 at least), the titlebar is noticeably smaller in Windows 11 than if the app were compiled with MSVC
+	//
+	BOOL value = TRUE;
+	::DwmSetWindowAttribute(handle, DWMWA_USE_IMMERSIVE_DARK_MODE, &value, sizeof(value));
+
+	::UpdateWindow(handle);
 }
 
 /*****************************************************************************/

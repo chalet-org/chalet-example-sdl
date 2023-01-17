@@ -36,6 +36,9 @@
 			"links[:linux]": [
 				"dl"
 			],
+			"links[:windows]": [
+				"dwmapi"
+			],
 			"macosFrameworks": [
 				"CoreFoundation",
 				"CoreAudio",
