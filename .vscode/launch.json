@@ -10,28 +10,28 @@
 			"cwd": "${workspaceFolder}",
 			"console": "integratedTerminal",
 			"preLaunchTask": "Build: Debug",
-			"program": "${workspaceFolder}/build/x64-pc-windows-msvc17_Debug/sdl2-app.exe",
+			"program": "${workspaceFolder}/build/x64-pc-windows-msvc17_Debug/sdl-app.exe",
 			"envFile": "${workspaceFolder}/build/x64-pc-windows-msvc17_Debug/run.env"
 		},
 		{
 			"name": "LLDB",
 			"type": "lldb",
 			"request": "launch",
-			"program": "${workspaceFolder}/build/Debug/sdl2-app",
+			"program": "${workspaceFolder}/build/Debug/sdl-app",
 			"args": [],
 			"stopOnEntry": false,
 			"cwd": "${workspaceFolder}",
 			"preLaunchTask": "Build: Debug",
 			"osx": {
-				"program": "${workspaceFolder}/build/x86_64-apple-darwin_Debug/sdl2-app",
+				"program": "${workspaceFolder}/build/x86_64-apple-darwin_Debug/sdl-app",
 				"env": {
-					"DYLD_FALLBACK_LIBRARY_PATH": "${workspaceFolder}/build/x86_64-apple-darwin_Debug/chalet_external/sdl2"
+					"DYLD_FALLBACK_LIBRARY_PATH": "${workspaceFolder}/build/x86_64-apple-darwin_Debug/chalet_external/sdl"
 				}
 			},
 			"windows": {
-				"program": "${workspaceFolder}/build/x86_64-pc-windows-msvc_Debug/sdl2-app.exe",
+				"program": "${workspaceFolder}/build/x86_64-pc-windows-msvc_Debug/sdl-app.exe",
 				"env": {
-					"Path": "${workspaceFolder}/build/x86_64-pc-windows-msvc_Debug/chalet_external/sdl2;C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/lib;%Path%"
+					"Path": "${workspaceFolder}/build/x86_64-pc-windows-msvc_Debug/chalet_external/sdl;C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/lib;%Path%"
 				}
 			}
 		},
@@ -39,7 +39,7 @@
 			"name": "GDB",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/build/Debug/sdl2-app",
+			"program": "${workspaceFolder}/build/Debug/sdl-app",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
@@ -47,7 +47,7 @@
 			"windows": {
 				"MIMode": "gdb",
 				"miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
-				"program": "${workspaceFolder}/build/x86_64-w64-mingw32_Debug/sdl2-app.exe",
+				"program": "${workspaceFolder}/build/x86_64-w64-mingw32_Debug/sdl-app.exe",
 				"envFile": "${workspaceFolder}/build/x86_64-w64-mingw32_Debug/run.env"
 			},
 			"linux": {
@@ -55,7 +55,7 @@
 				"miDebuggerPath": "/usr/bin/gdb",
 				"externalConsole": false,
 				"internalConsoleOptions": "neverOpen",
-				"program": "${workspaceRoot}/build/x86_64-pc-linux-gnu_Debug/sdl2-app",
+				"program": "${workspaceRoot}/build/x86_64-pc-linux-gnu_Debug/sdl-app",
 				"envFile": "${workspaceFolder}/build/x86_64-pc-linux-gnu_Debug/run.env"
 			}
 		}

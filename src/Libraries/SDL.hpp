@@ -1,5 +1,4 @@
-#ifndef LIBRARIES_SDL2_HPP
-#define LIBRARIES_SDL2_HPP
+#pragma once
 
 #if defined(__GNUC__)
 	#pragma GCC diagnostic push
@@ -13,5 +12,3 @@
 #if defined(__GNUC__)
 	#pragma GCC diagnostic pop
 #endif
-
-#endif // LIBRARIES_SDL2_HPP

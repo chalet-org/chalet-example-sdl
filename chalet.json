@@ -1,8 +1,8 @@
 {
 	"version": "1.0.0",
-	"name": "Chalet Example - SDL2",
+	"name": "Chalet Example - SDL",
 	"externalDependencies": {
-		"sdl2": {
+		"sdl": {
 			"repository": "git@github.com:libsdl-org/SDL.git",
 			"tag": "release-2.26.0"
 		}
@@ -19,10 +19,10 @@
 				"_DEBUG"
 			],
 			"includeDirs": [
-				"${external:sdl2}/include"
+				"${external:sdl}/include"
 			],
 			"libDirs": [
-				"${externalBuild:sdl2}"
+				"${externalBuild:sdl}"
 			],
 			"links[:!debug]": [
 				"SDL2"
@@ -55,9 +55,9 @@
 		}
 	},
 	"targets": {
-		"sdl2": {
+		"sdl": {
 			"kind": "cmakeProject",
-			"location": "${external:sdl2}",
+			"location": "${external:sdl}",
 			"recheck": false,
 			"rebuild": false,
 			"defines[:linux]": [
@@ -70,7 +70,7 @@
 				"SDL_STATIC=OFF"
 			]
 		},
-		"sdl2-app": {
+		"sdl-app": {
 			"kind": "executable",
 			"settings:Cxx": {
 				"precompiledHeader": "src/PCH.hpp",
@@ -85,21 +85,21 @@
 		}
 	},
 	"distribution": {
-		"SDL2App": {
+		"SDLApp": {
 			"kind": "bundle",
 			"buildTargets": "*",
 			"macosBundle": {
 				"type": "app",
 				"infoPropertyList": "platform/macos/Info.plist.json",
 				"entitlementsPropertyList": "platform/macos/Entitlements.plist.json",
-				"icon": "platform/sdl2-logo.png"
+				"icon": "platform/sdl-logo.png"
 			},
 			"linuxDesktopEntry": {
 				"template": "platform/linux/app.desktop",
-				"icon": "platform/sdl2-logo.png"
+				"icon": "platform/sdl-logo.png"
 			}
 		},
-		"SDL2App.dmg": {
+		"SDLApp.dmg": {
 			"kind": "macosDiskImage",
 			"pathbarVisible": false,
 			"textSize": 12,
@@ -113,7 +113,7 @@
 				"height": 342
 			},
 			"positions": {
-				"SDL2App": {
+				"SDLApp": {
 					"x": 120,
 					"y": 188
 				},
