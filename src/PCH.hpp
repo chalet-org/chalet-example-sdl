@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PCH_HPP
+#define PCH_HPP
 
 #ifndef _DEBUG
 	#ifndef NDEBUG
@@ -36,3 +37,5 @@
 
 // Macros
 #define UNUSED(x) (void)(x)
+
+#endif // PCH_HPP
