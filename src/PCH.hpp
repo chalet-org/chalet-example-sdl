@@ -38,4 +38,4 @@
 // Macros
 #define UNUSED(x) (void)(x)
 
-#endif
+#endif // PRECOMPILED_HEADER_HPP
