@@ -3,6 +3,7 @@
 	"name": "Chalet Example - SDL",
 	"externalDependencies": {
 		"sdl": {
+			"kind": "git",
 			"repository": "git@github.com:libsdl-org/SDL.git",
 			"tag": "release-2.26.0"
 		}
