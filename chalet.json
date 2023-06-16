@@ -40,7 +40,7 @@
 			"links[:windows]": [
 				"dwmapi"
 			],
-			"macosFrameworks": [
+			"appleFrameworks": [
 				"CoreFoundation",
 				"CoreAudio",
 				"CoreVideo",
