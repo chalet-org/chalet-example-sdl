@@ -11,8 +11,12 @@ namespace
 #if defined(_WIN32)
 using WindowHandle = HWND__*;
 #elif defined(__linux__)
+	#if defined(SDL_VIDEO_DRIVER_WAYLAND)
+using WindowHandle = void*;
+	#else
 // X11 - Window (unsigned long)
-typedef unsigned long WindowHandle;
+using WindowHandle = unsigned long;
+	#endif
 #elif defined(__APPLE__)
 // MacOS Cocoa - NSWindow / NSView (void*)
 using WindowHandle = void*;
@@ -37,7 +41,7 @@ WindowHandle getPlatformWindowHandle(SDL_Window* inWindow)
 	#if defined(SDL_VIDEO_DRIVER_X11)
 		return systemInfo.info.x11.window;
 	#elif defined(SDL_VIDEO_DRIVER_WAYLAND)
-		return systemInfo.info.wl.shell_surface;
+		return systemInfo.info.wl.egl_window;
 	#else
 		std::cerr << "Platform handle not recognized";
 	#endif
