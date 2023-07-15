@@ -25,9 +25,8 @@ using WindowHandle = void*;
 WindowHandle getPlatformWindowHandle(SDL_Window* inWindow)
 {
 	SDL_SysWMinfo systemInfo;
-	SDL_VERSION(&systemInfo.version);
 
-	if (SDL_GetWindowWMInfo(inWindow, &systemInfo))
+	if (SDL_GetWindowWMInfo(inWindow, &systemInfo, SDL_SYSWM_CURRENT_VERSION) == 0)
 	{
 #if defined(_WIN32)
 		assert(systemInfo.subsystem == SDL_SYSWM_WINDOWS && "subsystem not windows");

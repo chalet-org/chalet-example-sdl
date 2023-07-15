@@ -4,8 +4,7 @@
 	"externalDependencies": {
 		"sdl": {
 			"kind": "git",
-			"repository": "git@github.com:libsdl-org/SDL.git",
-			"tag": "release-2.28.1"
+			"repository": "git@github.com:libsdl-org/SDL.git"
 		}
 	},
 	"abstracts:*": {
@@ -26,10 +25,10 @@
 				"${externalBuild:sdl}"
 			],
 			"links[:!debug]": [
-				"SDL2"
+				"SDL3"
 			],
 			"links[:debug]": [
-				"SDL2d"
+				"SDL3d"
 			],
 			"links[:macos]": [
 				"iconv"
