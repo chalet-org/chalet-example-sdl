@@ -5,7 +5,7 @@
 		"sdl": {
 			"kind": "git",
 			"repository": "git@github.com:libsdl-org/SDL.git",
-			"tag": "release-2.28.1"
+			"tag": "release-2.26.5"
 		}
 	},
 	"abstracts:*": {
@@ -61,14 +61,20 @@
 			"location": "${external:sdl}",
 			"recheck": false,
 			"rebuild": false,
+			"defines[:macos]": [
+				"CMAKE_POSITION_INDEPENDENT_CODE=ON",
+				"BUILD_SHARED_LIBS=OFF",
+				"BUILD_STATIC_LIBS=ON"
+			],
 			"defines[:linux]": [
-				"SDL_SHARED=OFF",
-				"SDL_STATIC=ON",
-				"CMAKE_C_FLAGS=-fPIC"
+				"CMAKE_POSITION_INDEPENDENT_CODE=ON",
+				"BUILD_SHARED_LIBS=OFF",
+				"BUILD_STATIC_LIBS=ON"
 			],
 			"defines[:windows]": [
-				"SDL_SHARED=ON",
-				"SDL_STATIC=OFF"
+				"CMAKE_POSITION_INDEPENDENT_CODE=ON",
+				"BUILD_SHARED_LIBS=ON",
+				"BUILD_STATIC_LIBS=OFF"
 			]
 		},
 		"sdl-app": {
