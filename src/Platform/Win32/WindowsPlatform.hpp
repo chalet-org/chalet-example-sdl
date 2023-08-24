@@ -14,7 +14,7 @@ private:
 	float getScreenScalingFactor();
 
 	PBYTE getIconDirectory(const int inResourceId);
-	HICON getIconFromIconDirectory(PBYTE inIconDirectory, const std::uint32_t inSize);
+	HICON getIconFromIconDirectory(PBYTE inIconDirectory, const uint32_t inSize);
 
 	float m_screenScalingFactor = 0.0f;
 };
