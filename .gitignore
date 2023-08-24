@@ -3,6 +3,7 @@
 chalet_external/
 build/
 dist/
+.env*
 gmon.out
 *.stats
 Thumbs.db
