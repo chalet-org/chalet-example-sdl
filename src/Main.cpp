@@ -54,20 +54,24 @@ int main(const int argc, const char* const argv[])
 	SDL_Vertex vert[vertSize];
 	int indices[6];
 
-	vert[0].position.x = 32;
-	vert[0].position.y = 448;
+	SDL_FPoint padding;
+	padding.x = 128;
+	padding.y = 64;
+
+	vert[0].position.x = 0 + padding.x;
+	vert[0].position.y = screenHeight - padding.y;
 	vert[0].color = { 0, 0, 255, 255 };
 
-	vert[1].position.x = 608;
-	vert[1].position.y = 448;
+	vert[1].position.x = screenWidth - padding.x;
+	vert[1].position.y = screenHeight - padding.y;
 	vert[1].color = { 0, 255, 0, 255 };
 
-	vert[2].position.x = 608;
-	vert[2].position.y = 32;
+	vert[2].position.x = screenWidth - padding.x;
+	vert[2].position.y = 0 + padding.y;
 	vert[2].color = { 0, 0, 0, 255 };
 
-	vert[3].position.x = 32;
-	vert[3].position.y = 32;
+	vert[3].position.x = 0 + padding.x;
+	vert[3].position.y = 0 + padding.y;
 	vert[3].color = { 255, 0, 0, 255 };
 
 	indices[0] = 0;
@@ -77,6 +81,12 @@ int main(const int argc, const char* const argv[])
 	indices[3] = 3;
 	indices[4] = 1;
 	indices[5] = 2;
+
+	SDL_Color clearColor{ 100, 149, 237, 255 };
+
+	SDL_SetRenderDrawColor(renderer, clearColor.r, clearColor.g, clearColor.b, clearColor.a);
+	SDL_RenderClear(renderer);
+	SDL_RenderPresent(renderer);
 
 	SDL_ShowWindow(window);
 
@@ -93,7 +103,7 @@ int main(const int argc, const char* const argv[])
 			}
 		}
 
-		SDL_SetRenderDrawColor(renderer, 34, 34, 85, 255);
+		SDL_SetRenderDrawColor(renderer, clearColor.r, clearColor.g, clearColor.b, clearColor.a);
 		SDL_RenderClear(renderer);
 
 		// Draw stuff
