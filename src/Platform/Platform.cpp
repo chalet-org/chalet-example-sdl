@@ -20,6 +20,8 @@ using WindowHandle = unsigned long;
 #elif defined(__APPLE__)
 // MacOS Cocoa - NSWindow / NSView (void*)
 using WindowHandle = void*;
+#elif defined(__EMSCRIPTEN__)
+using WindowHandle = void*;
 #endif
 
 WindowHandle getPlatformWindowHandle(SDL_Window* inWindow)

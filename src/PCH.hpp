@@ -20,6 +20,7 @@
 #include <set>
 #include <string>
 #include <vector>
+#include <array>
 
 // Windows
 #ifdef _WIN32

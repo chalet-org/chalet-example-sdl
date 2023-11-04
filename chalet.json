@@ -25,10 +25,10 @@
 			"libDirs": [
 				"${externalBuild:sdl}"
 			],
-			"links[:!debug]": [
+			"links[:!debug|:web]": [
 				"SDL2"
 			],
-			"links[:debug]": [
+			"links[:debug+:!web]": [
 				"SDL2d"
 			],
 			"links[:macos]": [
