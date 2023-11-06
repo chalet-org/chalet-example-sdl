@@ -3,9 +3,12 @@
 #include "Application.hpp"
 #include "Libraries/Emscripten.hpp"
 
+namespace
+{
 void mainLoop()
 {
 	sdl::view.get().runMainLoop();
+}
 }
 
 int main(const int argc, const char* const argv[])
