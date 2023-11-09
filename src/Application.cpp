@@ -167,8 +167,8 @@ bool Application::render(Geometry& inGeometry)
 
 	int result = SDL_RenderGeometry(m_renderer,
 		nullptr, // texture
-		vertices.data(), static_cast<unsigned int>(vertices.size()),
-		indices.data(), static_cast<unsigned int>(indices.size())
+		vertices.data(), static_cast<int>(vertices.size()),
+		indices.data(), static_cast<int>(indices.size())
 	);
 
 	return result < 0;

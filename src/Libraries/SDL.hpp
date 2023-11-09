@@ -3,6 +3,7 @@
 #if defined(__GNUC__)
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wdouble-promotion"
+	#pragma GCC diagnostic ignored "-Wold-style-cast"
 #endif
 
 #if defined(__linux__)
