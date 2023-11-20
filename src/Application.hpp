@@ -60,7 +60,6 @@ private:
 	friend class Application;
 
 	std::unique_ptr<Application> m_application;
-
 };
 
 extern ApplicationView view;

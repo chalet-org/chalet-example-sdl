@@ -1,7 +1,7 @@
 #include "Application.hpp"
 
-#include "Platform/Platform.hpp"
 #include "Libraries/Emscripten.hpp"
+#include "Platform/Platform.hpp"
 
 namespace sdl
 {
@@ -68,9 +68,9 @@ void Application::runMainLoop()
 	{
 		dispose();
 #if defined(APP_EMSCRIPTEN)
-        emscripten_cancel_main_loop();
+		emscripten_cancel_main_loop();
 #else
-        ::exit(0);
+		::exit(0);
 #endif
 	}
 
@@ -96,9 +96,9 @@ bool Application::isRunning()
 }
 
 /*****************************************************************************/
-void Application::setClearColor(unsigned char r, unsigned char g, unsigned char b,unsigned char a)
+void Application::setClearColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
 {
-	m_clearColor = SDL_Color{ r, g, b, a };
+	m_clearColor = SDL_Color { r, g, b, a };
 }
 
 /*****************************************************************************/
@@ -167,9 +167,10 @@ bool Application::render(Geometry& inGeometry)
 
 	int result = SDL_RenderGeometry(m_renderer,
 		nullptr, // texture
-		vertices.data(), static_cast<int>(vertices.size()),
-		indices.data(), static_cast<int>(indices.size())
-	);
+		vertices.data(),
+		static_cast<int>(vertices.size()),
+		indices.data(),
+		static_cast<int>(indices.size()));
 
 	return result < 0;
 }
