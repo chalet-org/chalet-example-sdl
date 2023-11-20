@@ -47,11 +47,11 @@ int main(const int argc, const char* const argv[])
 		app.render(demoGeometry);
 	};
 
-
 #if defined(APP_EMSCRIPTEN)
-    emscripten_set_main_loop(mainLoop, 0, 1);
+	emscripten_set_main_loop(mainLoop, 0, 1);
 #else
-    while (1) {
+	while (1)
+	{
 		mainLoop();
 	}
 #endif

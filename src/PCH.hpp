@@ -10,6 +10,7 @@
 #include "Libraries/SDL.hpp"
 
 #include <algorithm>
+#include <array>
 #include <cstdio>
 #include <deque>
 #include <fstream>
@@ -20,7 +21,6 @@
 #include <set>
 #include <string>
 #include <vector>
-#include <array>
 
 // Windows
 #ifdef _WIN32
