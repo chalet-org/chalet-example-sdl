@@ -1,6 +1,15 @@
 #include <iostream>
 
-#include "Platform/Platform.hpp"
+#include "Application.hpp"
+#include "Libraries/Emscripten.hpp"
+
+namespace
+{
+void mainLoop()
+{
+	sdl::view.get().runMainLoop();
+}
+}
 
 int main(const int argc, const char* const argv[])
 {
@@ -19,102 +28,31 @@ int main(const int argc, const char* const argv[])
 
 	std::cout.flush();
 
-	SDL_Window* window = nullptr;
-	SDL_Renderer* renderer = nullptr;
+	// Note: The app is structured this way to play nicely with Emscripten
 
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-	{
-		std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << '\n';
+	auto& app = sdl::view.get();
+
+	app.setClearColor(100, 149, 237);
+
+	sdl::ApplicationSettings settings;
+	settings.title = "SDL Demo";
+	settings.width = 640;
+	settings.height = 480;
+
+	if (!app.initialize(settings))
 		return 1;
-	}
 
-	constexpr int screenWidth = 640;
-	constexpr int screenHeight = 480;
+	auto demoGeometry = app.getDemoGeometry();
+	app.onRender = [&app, &demoGeometry]() {
+		app.render(demoGeometry);
+	};
 
-	window = SDL_CreateWindow("SDL App", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_HIDDEN);
-	if (window == nullptr)
+#if defined(APP_EMSCRIPTEN)
+	emscripten_set_main_loop(mainLoop, 0, 1);
+#else
+	while (1)
 	{
-		std::cout << "Window could not be created! SDL_Error: " << SDL_GetError() << '\n';
-		SDL_Quit();
-		return 1;
+		mainLoop();
 	}
-
-	Platform::initialize(window);
-
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (renderer == nullptr)
-	{
-		std::cout << "Renderer could not be created! SDL_Error: " << SDL_GetError() << '\n';
-		SDL_DestroyWindow(window);
-		SDL_Quit();
-		return 1;
-	}
-
-	constexpr int vertSize = 4;
-	SDL_Vertex vert[vertSize];
-	int indices[6];
-
-	SDL_FPoint padding;
-	padding.x = 128;
-	padding.y = 64;
-
-	vert[0].position.x = 0 + padding.x;
-	vert[0].position.y = screenHeight - padding.y;
-	vert[0].color = { 0, 0, 255, 255 };
-
-	vert[1].position.x = screenWidth - padding.x;
-	vert[1].position.y = screenHeight - padding.y;
-	vert[1].color = { 0, 255, 0, 255 };
-
-	vert[2].position.x = screenWidth - padding.x;
-	vert[2].position.y = 0 + padding.y;
-	vert[2].color = { 0, 0, 0, 255 };
-
-	vert[3].position.x = 0 + padding.x;
-	vert[3].position.y = 0 + padding.y;
-	vert[3].color = { 255, 0, 0, 255 };
-
-	indices[0] = 0;
-	indices[1] = 1;
-	indices[2] = 3;
-
-	indices[3] = 3;
-	indices[4] = 1;
-	indices[5] = 2;
-
-	SDL_Color clearColor{ 100, 149, 237, 255 };
-
-	SDL_SetRenderDrawColor(renderer, clearColor.r, clearColor.g, clearColor.b, clearColor.a);
-	SDL_RenderClear(renderer);
-	SDL_RenderPresent(renderer);
-
-	SDL_ShowWindow(window);
-
-	SDL_Event ev;
-	bool quit = false;
-	while (!quit)
-	{
-		while (SDL_PollEvent(&ev) != 0)
-		{
-			if (ev.type == SDL_QUIT)
-			{
-				quit = true;
-				break;
-			}
-		}
-
-		SDL_SetRenderDrawColor(renderer, clearColor.r, clearColor.g, clearColor.b, clearColor.a);
-		SDL_RenderClear(renderer);
-
-		// Draw stuff
-		SDL_RenderGeometry(renderer, nullptr, vert, vertSize, indices, 6);
-
-		SDL_RenderPresent(renderer);
-	}
-
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
-	SDL_Quit();
-
-	return 0;
+#endif
 }

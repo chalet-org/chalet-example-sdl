@@ -10,6 +10,7 @@
 #include "Libraries/SDL.hpp"
 
 #include <algorithm>
+#include <array>
 #include <cstdio>
 #include <deque>
 #include <fstream>
