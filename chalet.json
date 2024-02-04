@@ -5,7 +5,57 @@
 		"sdl": {
 			"kind": "git",
 			"repository": "git@github.com:libsdl-org/SDL.git",
-			"tag": "release-2.26.5"
+			"tag": "release-2.30.0"
+		}
+	},
+	"package": {
+		"sdl-static": {
+			"settings:Cxx": {
+				"includeDirs": [
+					"${external:sdl}/include"
+				],
+				"libDirs": [
+					"${externalBuild:sdl}"
+				],
+				"links[:windows+:!debug]": [
+					"SDL2-static"
+				],
+				"links[:windows+:debug]": [
+					"SDL2-staticd"
+				],
+				"links[:!windows+:!debug]": [
+					"SDL2"
+				],
+				"links[:!windows+:debug]": [
+					"SDL2d"
+				],
+				"links[:macos]": [
+					"iconv"
+				],
+				"links[:linux]": [
+					"dl"
+				],
+				"links[:windows]": [
+					"winmm",
+					"setupapi",
+					"version",
+					"imm32",
+					"dwmapi"
+				],
+				"appleFrameworks": [
+					"CoreFoundation",
+					"CoreAudio",
+					"CoreVideo",
+					"CoreHaptics",
+					"AppKit",
+					"IOKit",
+					"Carbon",
+					"Metal",
+					"AudioToolbox",
+					"GameController",
+					"ForceFeedback"
+				]
+			}
 		}
 	},
 	"abstracts:*": {
@@ -18,40 +68,6 @@
 			"treatWarningsAsErrors": true,
 			"defines[:debug]": [
 				"_DEBUG"
-			],
-			"includeDirs": [
-				"${external:sdl}/include"
-			],
-			"libDirs": [
-				"${externalBuild:sdl}"
-			],
-			"links[:!debug|:web]": [
-				"SDL2"
-			],
-			"links[:debug+:!web]": [
-				"SDL2d"
-			],
-			"links[:macos]": [
-				"iconv"
-			],
-			"links[:linux]": [
-				"dl"
-			],
-			"links[:windows]": [
-				"dwmapi"
-			],
-			"appleFrameworks": [
-				"CoreFoundation",
-				"CoreAudio",
-				"CoreVideo",
-				"CoreHaptics",
-				"AppKit",
-				"IOKit",
-				"Carbon",
-				"Metal",
-				"AudioToolbox",
-				"GameController",
-				"ForceFeedback"
 			]
 		}
 	},
@@ -61,20 +77,18 @@
 			"location": "${external:sdl}",
 			"recheck": false,
 			"rebuild": false,
-			"defines[:macos]": [
-				"CMAKE_POSITION_INDEPENDENT_CODE=ON",
-				"BUILD_SHARED_LIBS=OFF",
-				"BUILD_STATIC_LIBS=ON"
-			],
-			"defines[:linux]": [
-				"CMAKE_POSITION_INDEPENDENT_CODE=ON",
-				"BUILD_SHARED_LIBS=OFF",
-				"BUILD_STATIC_LIBS=ON"
-			],
-			"defines[:windows]": [
-				"CMAKE_POSITION_INDEPENDENT_CODE=ON",
-				"BUILD_SHARED_LIBS=ON",
-				"BUILD_STATIC_LIBS=OFF"
+			"defines": [
+				"SDL_STATIC_PIC=ON",
+				"SDL_WERROR=ON",
+				"SDL_SHARED=OFF",
+				"SDL_STATIC=ON",
+				"SDL_TESTS=OFF",
+				"SDL_INSTALL_TESTS=OFF",
+				"SDL_CLANG_TIDY=OFF",
+				"SDL_VENDOR_INFO='Built with Chalet'",
+				"SDL_DISABLE_INSTALL=ON",
+				"SDL_DISABLE_INSTALL_CPACK=ON",
+				"SDL_DISABLE_INSTALL_DOCS=ON"
 			]
 		},
 		"sdl-app": {
@@ -88,7 +102,10 @@
 				"windowsApplicationIcon": "platform/windows/app.ico",
 				"windowsApplicationManifest": "platform/windows/app.manifest"
 			},
-			"files": "src/**.cpp"
+			"files": "src/**.cpp",
+			"importPackages": [
+				"sdl-static"
+			]
 		}
 	},
 	"distribution": {
