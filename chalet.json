@@ -11,33 +11,8 @@
 	"package": {
 		"sdl-static": {
 			"settings:Cxx": {
-				"includeDirs": [
-					"${external:sdl}/include"
-				],
-				"libDirs": [
-					"${externalBuild:sdl}"
-				],
-				"links[:windows+:!debug]": [
-					"SDL2-static"
-				],
-				"links[:windows+:debug]": [
-					"SDL2-staticd"
-				],
-				"links[:web]": [
-					"SDL2"
-				],
-				"links[:!windows+:!debug+:!web]": [
-					"SDL2"
-				],
-				"links[:!windows+:debug+:!web]": [
-					"SDL2d"
-				],
-				"links[:macos]": [
-					"iconv"
-				],
-				"links[:linux]": [
-					"dl"
-				],
+				"includeDirs": "${external:sdl}/include",
+				"libDirs": "${externalBuild:sdl}",
 				"links[:windows]": [
 					"winmm",
 					"setupapi",
@@ -45,6 +20,15 @@
 					"imm32",
 					"dwmapi"
 				],
+				"links[:macos]": "iconv",
+				"links[:linux]": "dl",
+				"links[:web]": "SDL2",
+				"links[:windows+:!debug]": "SDL2-static",
+				"links[:windows+:debug]": "SDL2-staticd",
+				"links[:macos+:!debug]": "SDL2",
+				"links[:macos+:debug]": "SDL2d",
+				"links[:linux+:!debug]": "SDL2",
+				"links[:linux+:debug]": "SDL2d",
 				"appleFrameworks": [
 					"CoreFoundation",
 					"CoreAudio",
