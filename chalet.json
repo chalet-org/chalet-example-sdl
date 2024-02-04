@@ -23,10 +23,13 @@
 				"links[:windows+:debug]": [
 					"SDL2-staticd"
 				],
-				"links[:!windows+:!debug]": [
+				"links[:web]": [
 					"SDL2"
 				],
-				"links[:!windows+:debug]": [
+				"links[:!windows+:!debug+:!web]": [
+					"SDL2"
+				],
+				"links[:!windows+:debug+:!web]": [
 					"SDL2d"
 				],
 				"links[:macos]": [
