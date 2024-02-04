@@ -13,6 +13,13 @@
 			"settings:Cxx": {
 				"includeDirs": "${external:sdl}/include",
 				"libDirs": "${externalBuild:sdl}",
+				"links[:web]": "SDL2",
+				"links[:windows+:!debug]": "SDL2-static",
+				"links[:windows+:debug]": "SDL2-staticd",
+				"links[:macos+:!debug]": "SDL2",
+				"links[:macos+:debug]": "SDL2d",
+				"links[:linux+:!debug]": "SDL2",
+				"links[:linux+:debug]": "SDL2d",
 				"links[:windows]": [
 					"winmm",
 					"setupapi",
@@ -22,13 +29,6 @@
 				],
 				"links[:macos]": "iconv",
 				"links[:linux]": "dl",
-				"links[:web]": "SDL2",
-				"links[:windows+:!debug]": "SDL2-static",
-				"links[:windows+:debug]": "SDL2-staticd",
-				"links[:macos+:!debug]": "SDL2",
-				"links[:macos+:debug]": "SDL2d",
-				"links[:linux+:!debug]": "SDL2",
-				"links[:linux+:debug]": "SDL2d",
 				"appleFrameworks": [
 					"CoreFoundation",
 					"CoreAudio",
