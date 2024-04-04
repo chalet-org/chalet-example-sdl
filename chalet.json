@@ -5,7 +5,7 @@
 		"sdl": {
 			"kind": "git",
 			"repository": "git@github.com:libsdl-org/SDL.git",
-			"tag": "release-2.30.0"
+			"tag": "release-2.30.2"
 		}
 	},
 	"package": {
