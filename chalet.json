@@ -65,6 +65,7 @@
 			"recheck": false,
 			"rebuild": false,
 			"defines": [
+				"SDL_CCACHE=OFF",
 				"SDL_STATIC_PIC=ON",
 				"SDL_WERROR=ON",
 				"SDL_SHARED=OFF",
