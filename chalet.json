@@ -14,10 +14,8 @@
 				"includeDirs": "${external:sdl}/include",
 				"libDirs": "${externalBuild:sdl}",
 				"links[:web]": "SDL2",
-				"links[toolchain:msvc+:!debug]": "SDL2-static",
-				"links[toolchain:msvc+:debug]": "SDL2-staticd",
-				"links[toolchain:!msvc+:!debug]": "SDL2",
-				"links[toolchain:!msvc+:debug]": "SDL2d",
+				"links[toolchain:msvc]": "SDL2-static",
+				"links[toolchain:!msvc]": "SDL2",
 				"links[:windows]": [
 					"winmm",
 					"setupapi",
@@ -74,7 +72,8 @@
 				"SDL_VENDOR_INFO='Built with Chalet'",
 				"SDL_DISABLE_INSTALL=ON",
 				"SDL_DISABLE_INSTALL_CPACK=ON",
-				"SDL_DISABLE_INSTALL_DOCS=ON"
+				"SDL_DISABLE_INSTALL_DOCS=ON",
+				"SDL_CMAKE_DEBUG_POSTFIX=\"\""
 			]
 		},
 		"sdl-app": {
