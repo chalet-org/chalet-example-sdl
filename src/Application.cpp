@@ -28,8 +28,10 @@ bool Application::initialize(const ApplicationSettings& settings)
 	Platform::initialize(m_window);
 
 	auto renderProps = SDL_CreateProperties();
+	// SDL_SetStringProperty(renderProps, SDL_PROP_RENDERER_CREATE_NAME_STRING, "vulkan");
 	SDL_SetPointerProperty(renderProps, SDL_PROP_RENDERER_CREATE_WINDOW_POINTER, m_window);
 	SDL_SetNumberProperty(renderProps, SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER, 1);
+	SDL_SetNumberProperty(renderProps, SDL_PROP_RENDERER_CREATE_OUTPUT_COLORSPACE_NUMBER, SDL_COLORSPACE_SRGB);
 	m_renderer = SDL_CreateRendererWithProperties(renderProps);
 	if (m_renderer == nullptr)
 	{
@@ -118,19 +120,19 @@ Geometry Application::getDemoGeometry()
 
 	result.vert[0].position.x = 0 + padding.x;
 	result.vert[0].position.y = screenHeight - padding.y;
-	result.vert[0].color = { 0, 0, 255, 255 };
+	result.vert[0].color = { 0.0f, 0.0f, 1.0f, 1.0f };
 
 	result.vert[1].position.x = screenWidth - padding.x;
 	result.vert[1].position.y = screenHeight - padding.y;
-	result.vert[1].color = { 0, 255, 0, 255 };
+	result.vert[1].color = { 0.0f, 1.0f, 0.0f, 1.0f };
 
 	result.vert[2].position.x = screenWidth - padding.x;
 	result.vert[2].position.y = 0 + padding.y;
-	result.vert[2].color = { 0, 0, 0, 255 };
+	result.vert[2].color = { 0.0f, 0.0f, 0.0f, 1.0f };
 
 	result.vert[3].position.x = 0 + padding.x;
 	result.vert[3].position.y = 0 + padding.y;
-	result.vert[3].color = { 255, 0, 0, 255 };
+	result.vert[3].color = { 1.0f, 0.0f, 0.0f, 1.0f };
 
 	result.indices[0] = 0;
 	result.indices[1] = 1;

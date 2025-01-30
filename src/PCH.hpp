@@ -32,8 +32,8 @@
 		#define _UNICODE
 	#endif
 
-// #define WIN32_LEAN_AND_MEAN
-// #include <windows.h>
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 #endif // _WIN32
 
 // Macros
