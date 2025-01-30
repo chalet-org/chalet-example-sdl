@@ -55,9 +55,14 @@ WindowHandle getPlatformWindowHandle(SDL_Window* inWindow)
 		return xwindow;
 	}
 	#endif
+#elif defined(__EMSCRIPTEN__)
+	UNUSED(inWindow);
 #endif
 
+#if !defined(__EMSCRIPTEN__)
 	std::cerr << "Couldn't get window information: " << SDL_GetError();
+#endif
+
 	return 0;
 }
 }
