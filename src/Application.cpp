@@ -8,7 +8,7 @@ namespace sdl
 /*****************************************************************************/
 bool Application::initialize(const ApplicationSettings& settings)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (!SDL_Init(SDL_INIT_VIDEO))
 	{
 		std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << '\n';
 		return 1;
@@ -17,7 +17,7 @@ bool Application::initialize(const ApplicationSettings& settings)
 	m_dimensions.x = settings.width;
 	m_dimensions.y = settings.height;
 
-	m_window = SDL_CreateWindow(settings.title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_dimensions.x, m_dimensions.y, SDL_WINDOW_HIDDEN);
+	m_window = SDL_CreateWindow(settings.title.c_str(), m_dimensions.x, m_dimensions.y, SDL_WINDOW_HIDDEN);
 	if (m_window == nullptr)
 	{
 		std::cout << "Window could not be created! SDL_Error: " << SDL_GetError() << '\n';
@@ -27,7 +27,10 @@ bool Application::initialize(const ApplicationSettings& settings)
 
 	Platform::initialize(m_window);
 
-	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	auto renderProps = SDL_CreateProperties();
+	SDL_SetPointerProperty(renderProps, SDL_PROP_RENDERER_CREATE_WINDOW_POINTER, m_window);
+	SDL_SetNumberProperty(renderProps, SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER, 1);
+	m_renderer = SDL_CreateRendererWithProperties(renderProps);
 	if (m_renderer == nullptr)
 	{
 		std::cout << "Renderer could not be created! SDL_Error: " << SDL_GetError() << '\n';
@@ -86,7 +89,7 @@ bool Application::isRunning()
 {
 	while (SDL_PollEvent(&m_ev) != 0)
 	{
-		if (m_ev.type == SDL_QUIT)
+		if (m_ev.type == SDL_EVENT_QUIT)
 			return false;
 
 		// Maybe manage other events outside of this function

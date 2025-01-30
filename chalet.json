@@ -5,7 +5,7 @@
 		"sdl": {
 			"kind": "git",
 			"repository": "git@github.com:libsdl-org/SDL.git",
-			"tag": "release-2.30.2"
+			"tag": "release-3.2.0"
 		}
 	},
 	"package": {
@@ -13,9 +13,9 @@
 			"settings:Cxx": {
 				"includeDirs": "${external:sdl}/include",
 				"libDirs": "${externalBuild:sdl}",
-				"links[:web]": "SDL2",
-				"links[toolchain:msvc]": "SDL2-static",
-				"links[toolchain:!msvc]": "SDL2",
+				"links[:web]": "SDL3",
+				"links[toolchain:msvc]": "SDL3-static",
+				"links[toolchain:!msvc]": "SDL3",
 				"links[:windows]": [
 					"winmm",
 					"setupapi",
@@ -28,11 +28,14 @@
 				"appleFrameworks": [
 					"CoreFoundation",
 					"CoreAudio",
+					"CoreMedia",
 					"CoreVideo",
 					"CoreHaptics",
+					"AVFoundation",
 					"AppKit",
 					"IOKit",
 					"Carbon",
+					"Cocoa",
 					"Metal",
 					"AudioToolbox",
 					"GameController",

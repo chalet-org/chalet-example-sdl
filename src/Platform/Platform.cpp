@@ -26,34 +26,36 @@ using WindowHandle = void*;
 
 WindowHandle getPlatformWindowHandle(SDL_Window* inWindow)
 {
-	SDL_SysWMinfo systemInfo;
-	SDL_VERSION(&systemInfo.version);
-
-	if (SDL_GetWindowWMInfo(inWindow, &systemInfo))
-	{
 #if defined(_WIN32)
-		assert(systemInfo.subsystem == SDL_SYSWM_WINDOWS && "subsystem not windows");
-		return systemInfo.info.win.window;
+	HWND hwnd = (HWND)SDL_GetPointerProperty(SDL_GetWindowProperties(inWindow), SDL_PROP_WINDOW_WIN32_HWND_POINTER, NULL);
+	return hwnd;
 #elif defined(__APPLE__)
-		assert(systemInfo.subsystem == SDL_SYSWM_COCOA && "subsystem not macos");
-		return systemInfo.info.cocoa.window;
+	auto handle = SDL_GetPointerProperty(SDL_GetWindowProperties(inWindow), SDL_PROP_WINDOW_COCOA_WINDOW_POINTER, NULL);
+	return handle;
 #elif defined(__linux__)
-		assert((systemInfo.subsystem == SDL_SYSWM_X11 || systemInfo.subsystem == SDL_SYSWM_WAYLAND) && "subsystem not linux");
-
-	#if defined(SDL_VIDEO_DRIVER_X11)
-		return systemInfo.info.x11.window;
-	#elif defined(SDL_VIDEO_DRIVER_WAYLAND)
-		return systemInfo.info.wl.egl_window;
-	#else
-		std::cerr << "Platform handle not recognized";
-	#endif
-#endif
+	if (SDL_strcmp(SDL_GetCurrentVideoDriver(), "x11") == 0)
+	{
+		// Display* xdisplay = (Display*)SDL_GetPointerProperty(SDL_GetWindowProperties(inWindow), SDL_PROP_WINDOW_X11_DISPLAY_POINTER, NULL);
+		auto xwindow = (Window)SDL_GetNumberProperty(SDL_GetWindowProperties(inWindow), SDL_PROP_WINDOW_X11_WINDOW_NUMBER, 0);
+		return xwindow;
+	}
+	else if (SDL_strcmp(SDL_GetCurrentVideoDriver(), "wayland") == 0)
+	{
+		// struct wl_display* display = (struct wl_display*)SDL_GetPointerProperty(SDL_GetWindowProperties(inWindow), SDL_PROP_WINDOW_WAYLAND_DISPLAY_POINTER, NULL);
+		auto surface = (wl_surface*)SDL_GetPointerProperty(SDL_GetWindowProperties(inWindow), SDL_PROP_WINDOW_WAYLAND_SURFACE_POINTER, NULL);
+		return surface;
 	}
 	else
 	{
 		std::cerr << "Couldn't get window information: " << SDL_GetError();
+		return 0;
 	}
-	return 0;
+#else
+	{
+		std::cerr << "Couldn't get window information: " << SDL_GetError();
+		return 0;
+	}
+#endif
 }
 }
 
