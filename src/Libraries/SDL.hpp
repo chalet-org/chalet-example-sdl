@@ -7,8 +7,8 @@
 #endif
 
 #if defined(__linux__)
-	// #define SDL_VIDEO_DRIVER_X11
-	#define SDL_VIDEO_DRIVER_WAYLAND
+	// #define SDL_VIDEO_DRIVER_WAYLAND
+	#define SDL_VIDEO_DRIVER_X11
 #endif
 
 #define SDL_MAIN_HANDLED
