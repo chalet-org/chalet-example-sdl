@@ -26,17 +26,19 @@
 				"links[:macos]": "iconv",
 				"links[:linux]": "dl",
 				"appleFrameworks": [
-					"CoreFoundation",
-					"CoreAudio",
 					"CoreVideo",
-					"CoreHaptics",
-					"AppKit",
+					"Cocoa",
 					"IOKit",
+					"ForceFeedback",
 					"Carbon",
-					"Metal",
+					"CoreAudio",
 					"AudioToolbox",
+					"AVFoundation",
+					"Foundation",
 					"GameController",
-					"ForceFeedback"
+					"Metal",
+					"QuartzCore",
+					"CoreHaptics"
 				]
 			}
 		}
@@ -60,6 +62,7 @@
 			"location": "${external:sdl}",
 			"recheck": false,
 			"rebuild": false,
+			"install": true,
 			"defines": [
 				"SDL_CCACHE=OFF",
 				"SDL_STATIC_PIC=ON",
