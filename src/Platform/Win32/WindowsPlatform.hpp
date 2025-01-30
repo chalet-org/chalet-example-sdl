@@ -2,6 +2,8 @@
 
 #include <array>
 
+#include "Libraries/Win32.hpp"
+
 namespace util
 {
 struct WindowsPlatform

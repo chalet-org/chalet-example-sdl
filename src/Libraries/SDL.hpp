@@ -13,7 +13,6 @@
 
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
-#include <SDL_syswm.h>
 
 #if defined(__GNUC__)
 	#pragma GCC diagnostic pop

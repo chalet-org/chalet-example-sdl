@@ -2,6 +2,8 @@
 
 #include <cassert>
 
+#include <SDL_syswm.h>
+
 #if defined(_WIN32)
 	#include "Platform/Win32/WindowsPlatform.hpp"
 #endif
