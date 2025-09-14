@@ -31,7 +31,6 @@ bool Application::initialize(const ApplicationSettings& settings)
 	// SDL_SetStringProperty(renderProps, SDL_PROP_RENDERER_CREATE_NAME_STRING, "vulkan");
 	SDL_SetPointerProperty(renderProps, SDL_PROP_RENDERER_CREATE_WINDOW_POINTER, m_window);
 	SDL_SetNumberProperty(renderProps, SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER, 1);
-	SDL_SetNumberProperty(renderProps, SDL_PROP_RENDERER_CREATE_OUTPUT_COLORSPACE_NUMBER, SDL_COLORSPACE_SRGB);
 	m_renderer = SDL_CreateRendererWithProperties(renderProps);
 	if (m_renderer == nullptr)
 	{
@@ -89,7 +88,7 @@ void Application::runMainLoop()
 /*****************************************************************************/
 bool Application::isRunning()
 {
-	while (SDL_PollEvent(&m_ev) != 0)
+	while (SDL_PollEvent(&m_ev))
 	{
 		if (m_ev.type == SDL_EVENT_QUIT)
 			return false;
@@ -170,14 +169,14 @@ bool Application::render(Geometry& inGeometry)
 	auto& vertices = inGeometry.vert;
 	auto& indices = inGeometry.indices;
 
-	int result = SDL_RenderGeometry(m_renderer,
+	bool result = SDL_RenderGeometry(m_renderer,
 		nullptr, // texture
 		vertices.data(),
 		static_cast<int>(vertices.size()),
 		indices.data(),
 		static_cast<int>(indices.size()));
 
-	return result < 0;
+	return result;
 }
 
 /*****************************************************************************/
